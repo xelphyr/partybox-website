@@ -16,6 +16,10 @@ body {
 		align-items: center;
 		justify-content: center;
 	}
+
+	.curved-text {
+		margin-bottom:-250px
+	}
 }
 
 

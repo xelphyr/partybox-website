@@ -10,7 +10,7 @@
 	import { onMount } from "svelte";
 
 
-    let {displayText, font = "50px serif", angle=Math.PI*0.6, radius=200} = $props();
+    let {displayText, font = "50px serif", gap=0.2, radius=200} = $props();
 
     const id = getId();
 
@@ -25,13 +25,21 @@
         context.font = font;
         context.textAlign = "center";
         context.fillStyle = "black";
+        context.textBaseline = "middle";
 
-        context.translate(canvas.width / 2, canvas.height / 2 + radius/2);
+        
+
+        context.translate(canvas.width / 2 - parseInt(font.substring(0, 2)), canvas.height / 2 + radius - 50);
+
+        let displayTextLength =  context.measureText(displayText).width
+
+        let angle = displayTextLength * (1+gap) / radius;
+
         context.rotate(-angle/2);
 
         for (let i = 0; i < displayText.length; i++) {
             const char = displayText[i];
-            context.rotate(angle / displayText.length);
+            context.rotate(angle * (context.measureText(char).width / displayTextLength));
             context.save();
             context.translate(0, -1 * radius);
             context.fillText(char, 0, 0);
@@ -40,7 +48,8 @@
     });
 </script>
 
-<canvas bind:this={canvas} id={id}
-        width = 1000 
-        height = 1000></canvas>
+<canvas class="curved-text"
+        bind:this={canvas} id={id}
+        width = 1150
+        height = 450></canvas>
 
