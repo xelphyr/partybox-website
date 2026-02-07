@@ -1,1 +1,23 @@
 @import 'tailwindcss';
+
+body {
+    background: radial-gradient(200vw 100vh at top, #FFFFFF, #ffdac7, #FF8FFC);
+    min-height: 100vh;
+    margin: 0;
+
+	.viewport-stack {
+		display: flex;
+		flex-direction: column;
+	}
+
+  	.panel {
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+
+
+
