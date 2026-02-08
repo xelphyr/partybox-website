@@ -4,24 +4,76 @@ body {
     background: radial-gradient(200vw 100vh at top, #FFFFFF, #ffdac7, #FF8FFC);
     min-height: 100vh;
     margin: 0;
-
-	.viewport-stack {
-		display: flex;
-		flex-direction: column;
-	}
-
-  	.panel {
-		height: 100vh;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.curved-text {
-		margin-bottom:-250px
-	}
 }
 
+.viewport-stack {
+	display: flex;
+	flex-direction: column;
+}
+
+.panel {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 auto;
+	flex-direction:column
+}
+
+.negbottommargin {
+	margin-bottom : -25%
+}
+
+.img {
+	max-width:40vw;
+
+}
+
+.bop {
+	animation: bop 1.2s cubic-bezier(.63,.07,.7,.92) infinite;
+}
+
+.bg {
+	position: fixed;
+	inset: 0;
+	z-index:-1;
+
+	background-image:
+		radial-gradient(circle, rgba(255,255,255,0.2) 2vw, transparent 2vw),
+		radial-gradient(circle, rgba(255,255,255,0.2) 2vw, transparent 2vw);
+
+	background-size: 10vw 8.66vw;
+
+	background-position:
+		0 0,
+		5vw 4.33vw; /* half width, half height */
+
+	animation: pan 3s linear infinite;
+}
+
+.text {
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
+	text-align: center
+}
+
+@keyframes bop {
+	0% {transform: rotate(-7deg);}
+	50% {transform: rotate(7deg);}
+	100% {transform: rotate(-7deg);}
+}
+
+@keyframes pan {
+	from {
+		background-position: 
+			0 0,
+			5vw 4.33vw;
+	}
+	to {
+		background-position:
+			5vw 4.33vw,
+			10vw 8.66vw;
+	}
+}
 
 
 
